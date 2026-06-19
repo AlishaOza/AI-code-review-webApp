@@ -1,0 +1,33 @@
+<div class="flex flex-col h-full w-full">
+  <div class="flex items-center justify-between px-4 py-2 bg-slate-900/60 border-b border-slate-800 shrink-0">
+    <span class="text-xs font-medium text-slate-400 tracking-wide uppercase">Review Analysis</span>
+    <span class="px-2 py-0.5 text-[10px] font-semibold bg-indigo-500/20 text-indigo-400 rounded-full border border-indigo-500/30">AI Powered</span>
+  </div>
+
+  <div class="flex-1 p-6 overflow-y-auto custom-scrollbar space-y-4">
+    
+    <div class="p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Optimization Opportunity</span>
+        <span class="text-xs text-slate-500">Line 24</span>
+      </div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Consider memoizing this function. Nested loops here present an <code class="bg-slate-950 px-1 py-0.5 rounded text-amber-300 font-mono text-xs">O(n²)</code> complexity risk.
+      </p>
+    </div>
+
+    <div class="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl space-y-2">
+      <div class="flex items-center justify-between">
+        <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Best Practices</span>
+        <span class="text-xs text-slate-500">Global</span>
+      </div>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Excellent structural separation and type safety definitions.
+      </p>
+    </div>
+    <div
+  [innerHTML]="codeReview.review() | markdown">
+</div>
+
+  </div>
+</div>
