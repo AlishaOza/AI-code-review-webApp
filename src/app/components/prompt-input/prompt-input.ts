@@ -37,10 +37,33 @@ sendCode() {
   const language =
     this.languageService.selectedLanguage();
 
-  this.codeReview.reviewCode(
-    language,
-    code
-  );
+  this.codeReview.review.set('');
+
+  this.codeReview
+    .reviewCode(language, code)
+    .subscribe({
+
+      next: (chunk) => {
+
+        this.codeReview.review.update(
+          current => current + chunk
+        );
+
+      },
+
+      complete: () => {
+
+        this.codeReview.reviewHistory.addReview({
+          id: Date.now(),
+          language,
+          code,
+          review: this.codeReview.review(),
+          timestamp: new Date()
+        });
+
+      }
+
+    });
 
 }
 

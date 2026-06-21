@@ -4,6 +4,7 @@ import { Injectable ,signal} from '@angular/core';
   providedIn: 'root',
 })
 export class ReviewHistory {
+    selectedReview = signal<any | null>(null);
   constructor() {
 
   const saved =
@@ -30,5 +31,8 @@ export class ReviewHistory {
     'reviews',
     JSON.stringify(updated)
   );
+}
+restore(review:any){
+this.selectedReview.set(review);
 }
 }

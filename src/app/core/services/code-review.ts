@@ -1,60 +1,61 @@
 import { Injectable, signal } from '@angular/core';
-import { EditorService } from '../../core/services/editor-service';
-import { LanguageService } from '../../core/services/language-service';
 import { interval, Observable } from 'rxjs';
 import { ReviewHistory } from './review-history';
+
 @Injectable({
   providedIn: 'root',
 })
 export class CodeReview {
+
   isLoading = signal(false);
   review = signal('');
+
   constructor(
     public reviewHistory: ReviewHistory
   ) {}
-reviewCode(
-  language: string,
-  code: string
-): Observable<string> {
 
-  const chunks = [
-    `# Code Review\n\n`,
-    `Language: ${language}\n\n`,
-    `## Issues Found\n\n`,
-    `1. Avoid using var.\n`,
-    `2. Use const instead.\n`,
-    `3. Add error handling.\n`
-  ];
+  reviewCode(
+    language: string,
+    code: string
+  ): Observable<string> {
 
-  return new Observable<string>((observer) => {
+    const chunks = [
+      `# Code Review\n\n`,
+      `Language: ${language}\n\n`,
+      `## Issues Found\n\n`,
+      `1. Avoid using var.\n`,
+      `2. Use const instead.\n`,
+      `3. Add error handling.\n`
+    ];
 
-    this.isLoading.set(true);
+    return new Observable<string>((observer) => {
 
-    let index = 0;
+      this.isLoading.set(true);
 
-    const subscription = interval(800).subscribe(() => {
+      let index = 0;
 
-      if (index < chunks.length) {
+      const subscription = interval(800).subscribe(() => {
 
-        observer.next(
-          chunks[index]
-        );
+        if (index < chunks.length) {
 
-        index++;
+          observer.next(chunks[index]);
 
-      } else {
+          index++;
 
-        this.isLoading.set(false);
+        } else {
 
-        observer.complete();
+          this.isLoading.set(false);
 
-        subscription.unsubscribe();
+          observer.complete();
 
-      }
+          subscription.unsubscribe();
+
+        }
+
+      });
 
     });
 
-  });
+  }
 
-}
 }

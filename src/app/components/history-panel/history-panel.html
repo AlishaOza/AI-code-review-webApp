@@ -17,7 +17,7 @@
     @for (
     item of reviewHistory.reviews();
     track $index
-    ) { <div class="p-3 bg-slate-850 border border-slate-750 rounded-lg cursor-pointer transition-colors">
+    ) { <div class="p-3 bg-slate-850 border border-slate-750 rounded-lg cursor-pointer transition-colors" (click)="reviewHistory.restore(item)">
       <div class="flex items-center justify-between mb-1">
         <span class="text-xs font-medium text-blue-400 font-mono truncate max-w-[120px]"> {{ item.language }}</span>
         <span class="text-[10px] text-slate-500">{{ item.timestamp | date: 'shortTime'   }}</span>
