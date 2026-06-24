@@ -5,9 +5,6 @@ import rateLimit from 'express-rate-limit';
 import Groq from 'groq-sdk';
 
 dotenv.config();
-
-console.log('Groq key loaded:', !!process.env.GROQ_API_KEY);
-
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -97,11 +94,6 @@ app.post('/chat', limiter, async (req, res) => {
     });
 
     const raw = completion.choices[0].message.content;
-console.log('====================');
-console.log('RAW RESPONSE FROM GROQ');
-console.log(raw);
-console.log('====================');
-    // Strip any accidental markdown fences the model may add despite instructions
     const cleaned = raw.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
 
     let parsed;

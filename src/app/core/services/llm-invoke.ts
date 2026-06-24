@@ -17,7 +17,7 @@ export class LlmInvoke {
   ) {
 
     return this.http.post(
-      'http://localhost:3001/chat',
+      'cooperative-happiness-production-98ad.up.railway.app',
       {
         language,
         code,
