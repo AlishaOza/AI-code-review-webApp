@@ -28,6 +28,20 @@ export class CodeEditor implements AfterViewInit {
         });
       }
     });
+    effect(() => {
+
+  const code = this.editorService.code();
+
+  if (
+    this.editor &&
+    this.editor.getValue() !== code
+  ) {
+
+    this.editor.setValue(code);
+
+  }
+
+});
   }
 
   ngAfterViewInit(): void {

@@ -4,11 +4,12 @@ import { Injectable ,signal} from '@angular/core';
   providedIn: 'root',
 })
 export class ReviewHistory {
+  selectedReview = signal<any | null>(null);
+   reviews = signal<any[]>([]);
   constructor() {
 
   const saved =
     sessionStorage.getItem('reviews');
-
   if (saved) {
     this.reviews.set(
       JSON.parse(saved)
@@ -16,7 +17,7 @@ export class ReviewHistory {
   }
 
 }
-    reviews = signal<any[]>([]);
+   
     addReview(review: any) {
 
   const updated = [
@@ -30,5 +31,8 @@ export class ReviewHistory {
     'reviews',
     JSON.stringify(updated)
   );
+}
+selectReview(review: any) {
+  this.selectedReview.set(review);
 }
 }

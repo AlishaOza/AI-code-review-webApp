@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { ReviewHistory } from '../../core/services/review-history';
 import { DatePipe } from '@angular/common'; 
 @Component({
@@ -8,8 +8,14 @@ import { DatePipe } from '@angular/common';
   styleUrl: './history-panel.css',
 })
 export class HistoryPanel {
+  count = computed(() => this.reviewHistory.reviews().length);
 constructor(
-  public reviewHistory:ReviewHistory
-){}
+  public reviewHistory: ReviewHistory
+){
+  
+}
+
+
 myDate = new Date();
+
 }

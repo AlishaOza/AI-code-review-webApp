@@ -7,7 +7,7 @@
       </svg>
       <span class="text-sm font-semibold text-slate-200">Review History</span>
     </div>
-    <span class="text-xs bg-slate-800 px-2 py-0.5 rounded text-slate-400 font-mono">4 items</span>
+    <span class="text-xs bg-slate-800 px-2 py-0.5 rounded text-slate-400 font-mono">{{count()}} items</span>
   </div>
 
   <div class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-2">
@@ -17,8 +17,8 @@
     @for (
     item of reviewHistory.reviews();
     track $index
-    ) { <div class="p-3 bg-slate-850 border border-slate-750 rounded-lg cursor-pointer transition-colors">
-      <div class="flex items-center justify-between mb-1">
+    ) { <div class="p-3 bg-slate-850 border border-slate-750 rounded-lg cursor-pointer transition-colors" (click)="reviewHistory.selectReview(item)">
+      <div class="flex items-center justify-between mb-1"  >
         <span class="text-xs font-medium text-blue-400 font-mono truncate max-w-[120px]"> {{ item.language }}</span>
         <span class="text-[10px] text-slate-500">{{ item.timestamp | date: 'shortTime'   }}</span>
       </div>

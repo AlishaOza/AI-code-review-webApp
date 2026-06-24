@@ -1,60 +1,36 @@
 import { Injectable, signal } from '@angular/core';
-import { EditorService } from '../../core/services/editor-service';
-import { LanguageService } from '../../core/services/language-service';
-import { interval, Observable } from 'rxjs';
 import { ReviewHistory } from './review-history';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })
 export class CodeReview {
   isLoading = signal(false);
-  review = signal('');
+  review = signal<any>(null);
+
   constructor(
-    public reviewHistory: ReviewHistory
+    public reviewHistory: ReviewHistory,
+    private http: HttpClient
   ) {}
-reviewCode(
-  language: string,
-  code: string
-): Observable<string> {
 
-  const chunks = [
-    `# Code Review\n\n`,
-    `Language: ${language}\n\n`,
-    `## Issues Found\n\n`,
-    `1. Avoid using var.\n`,
-    `2. Use const instead.\n`,
-    `3. Add error handling.\n`
-  ];
-
-  return new Observable<string>((observer) => {
-
+  reviewCode(language: string, code: string, userPrompt: string = ''): void {
     this.isLoading.set(true);
+    this.review.set(null);
 
-    let index = 0;
-
-    const subscription = interval(800).subscribe(() => {
-
-      if (index < chunks.length) {
-
-        observer.next(
-          chunks[index]
-        );
-
-        index++;
-
-      } else {
-
+    this.http.post<{ review: any }>('http://localhost:3001/chat', {
+      language,
+      code,
+      userPrompt
+    }).subscribe({
+      next: (response) => {
+        this.review.set(response.review);
         this.isLoading.set(false);
-
-        observer.complete();
-
-        subscription.unsubscribe();
-
+      },
+      error: (err) => {
+        console.error('Review error:', err);
+        this.isLoading.set(false);
       }
-
     });
-
-  });
-
-}
+  }
 }
