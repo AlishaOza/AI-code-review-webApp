@@ -1,59 +1,72 @@
-# AICodeReview
+# AI Code Review Web App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+## 🚀 Live Demo
 
-## Development server
+**Try the application here:**
+🔗https://ai-code-review-web-app.vercel.app/ 
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Overview
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+AI Code Review Web App is an intelligent platform that helps developers improve their code quality by providing instant AI-powered feedback. Instead of manually reviewing code or waiting for peer reviews, users can simply paste their code, select the appropriate programming language, and receive a detailed analysis within seconds.
 
-## Code scaffolding
+The application identifies potential issues, highlights areas for improvement, suggests better coding practices, and provides an overall assessment of the submitted code. It is designed to make code reviews faster, more consistent, and easier for developers of all experience levels.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## Features
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+* AI-powered code analysis.
+* Supports reviews for multiple programming languages.
+* Interactive code editor with syntax highlighting.
+* Detailed review with categorized issues and severity levels.
+* Custom prompts for focused code reviews.
+* Review history to revisit previous analyses.
+* Optimized code suggestions and recommendations.
+* Clean, responsive, and intuitive user interface.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## How It Works
 
-To build the project run:
+1. Paste or write your source code.
+2. Select the programming language.
+3. Add optional instructions for the review.
+4. Click **Analyze Code**.
+5. Receive a detailed AI-generated review with detected issues, severity levels, suggested fixes, optimized code, and an overall summary.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Use Cases
 
-## Running unit tests
+* Improve code quality before deployment.
+* Detect bugs and potential issues early.
+* Learn coding best practices through AI feedback.
+* Review code quickly without manual effort.
+* Enhance code readability and maintainability.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## Future Enhancements
 
-## Running end-to-end tests
+* User authentication.
+* Export reviews as PDF or Markdown.
+* Multi-file project reviews.
+* Team collaboration.
+* Version comparison.
+* Support for additional AI models.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## Contributing
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Contributions are welcome! Feel free to fork the repository, create a new branch, and submit a pull request.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Author
+
+**Alisha Oza**
+
+⭐ If you found this project helpful, consider giving it a star!
