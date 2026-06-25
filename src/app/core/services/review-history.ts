@@ -23,7 +23,7 @@ export class ReviewHistory {
   const updated = [
     review,
     ...this.reviews()
-  ].slice(0, 5);
+  ].slice(0, 10);
 
   this.reviews.set(updated);
 
